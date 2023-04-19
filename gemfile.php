@@ -19,11 +19,11 @@ mkdir("gemfiles");
 //var_dump($post->post_content);
 //$data = ob_get_clean();
 $finalText="# ".$post->post_title."\n\n".$markdown;
-$fname = $post->ID."-".$post->post_title.".gemi";
+$fname = $post->ID."-".$post->post_title.".gmi";
 $fp = fopen("gemfiles/".$fname, "w");
 fwrite($fp, $finalText);
 fclose($fp);
-$fp = fopen("gemfiles/index.gemi", "a");
+$fp = fopen("gemfiles/index.gmi", "a");
 fwrite($fp, "\n=> ".$fname." ".$post->post_title);
 fclose($fp);
 
