@@ -42,7 +42,9 @@ $posts = get_posts( array(
 foreach ($posts as $p) {
 //createGmiFromPost($p);
 $fname = getFileName($p);
-$index .="\n=> ".$fname." ".$p->post_title." (".$p->post_date.")\n";
+$datetime = new DateTime($p->post_date_gmt);
+$date=strtok($datetime->format(DateTime::ATOM), "T"); 
+$index .="\n=> ".$fname." ".$date." ".$p->post_title."\n";
 }
 $fp = fopen("gemfiles/index.gmi", "w");
 fwrite($fp, $index);
