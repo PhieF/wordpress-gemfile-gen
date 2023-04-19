@@ -17,7 +17,7 @@ function getFileName($post){
 
 function createGmiFromPost($post) {
 $converter = new HtmlConverter();
-$markdown = $converter->convert($post->post_content);
+$markdown = strip_tags($converter->convert($post->post_content));
 
 mkdir("gemfiles");
 //ob_start();
