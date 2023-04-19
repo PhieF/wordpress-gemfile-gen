@@ -19,9 +19,13 @@ mkdir("gemfiles");
 //var_dump($post->post_content);
 //$data = ob_get_clean();
 $finalText="# ".$post->post_title."\n\n".$markdown;
-
-$fp = fopen("gemfiles/".$post->ID."-".$post->post_title.".gemi", "w");
+$fname = $post->ID."-".$post->post_title.".gemi";
+$fp = fopen("gemfiles/".$fname, "w");
 fwrite($fp, $finalText);
 fclose($fp);
+$fp = fopen("gemfiles/index.gemi", "a");
+fwrite($fp, "\n=> ".$fname." ".$post->post_title);
+fclose($fp);
+
 }
 add_action( 'save_post', 'wporg_custom', 10, 2);
